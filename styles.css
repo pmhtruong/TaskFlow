@@ -1,0 +1,193 @@
+/* ===== Design tokens ===== */
+:root {
+  --background: #F8FAFC;
+  --text: #1E293B;
+  --muted: #BFBFBF;
+  --shadow: rgb(0 0 0 / 0.25);
+  --shadow-soft: rgb(0 0 0 / 0.04);
+  --error: #ef4444;
+  --checked: #22C55E;
+}
+/* ===== Reset ===== */
+*,*::before,*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ===== Base layout ===== */
+body {
+  font-family: "Roboto", sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Heading typography */
+h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  color: var(--text);
+}
+/* ===== App container ===== */
+.app-wrapper {
+  width: 100%;
+  max-width: 720px;
+  padding: 24px;
+}
+/* Main card component */
+.todo-box {
+  background: var(--background);
+  border-radius: 20px;
+  padding: 18px 33px 18px;
+  min-height: 165px;
+  box-shadow:
+    4px 4px 15px var(--shadow),
+    1px 1px 4px var(--shadow-soft);
+}
+/* ===== Header ===== */
+.todo-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 8px;
+}
+/* Back icon style */
+.todo-header .material-symbols-outlined {
+  font-size: 20px;
+  transform: translateY(0px);
+  color: var(--muted);
+  cursor: pointer;
+}
+/* Editable project title */
+#projectTitle {
+  outline: none;
+  border: none;
+  display: block;
+  min-height: 32px;
+  max-width: 500px;
+  padding: 2px 4px;
+  cursor: text;
+
+  /* Truncate overflow */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Placeholder when empty */
+#projectTitle:empty::before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+}
+
+/* Hover feedback */
+#projectTitle:hover {
+  background: var(--shadow-soft);
+  border-radius: 4px;
+}
+
+/* ===== Input ===== */
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 37px;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* ===== Task list ===== */
+ul li {
+  list-style: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 8px 30px;
+  margin-bottom: 2px;
+}
+
+/* Task row layout */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Checkbox icon */
+.checkbox {
+  cursor: pointer;
+  color: #666;
+  user-select: none;
+}
+
+.checkbox:hover {
+  color: var(--shadow);
+}
+/* ===== Checkbox color when completed ===== */
+
+.checkbox {
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+/* hover effect */
+.checkbox:hover {
+  transform: scale(1.1);
+}
+
+/* when task completed */
+.completed .checkbox {
+  color: var(--checked); 
+}
+/* Completed state */
+.completed .task-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Inline edit focus state */
+.task-text[contenteditable="true"]:focus {
+  outline: none;
+  background: rgb(0 0 0 / 0.05);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.task-text {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  line-height: 1.4;
+}
+/* ===== Delete button ===== */
+.delete-btn {
+  margin-left: auto;
+  font-size: 18px;
+  color: #aaa;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.task-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: #ff4d4f;
+}
+
+/* ===== Error message ===== */
+.error-message {
+  color: var(--error);
+  font-size: 13px;
+  margin: 4px 0 0 37px;
+  font-family: "Inter", sans-serif;
+}

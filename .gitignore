@@ -1,0 +1,17 @@
+# ===== System files =====
+.DS_Store
+Thumbs.db
+.affinity/
+
+# ===== Node =====
+node_modules/
+
+# ===== Logs =====
+*.log
+
+# ===== Build =====
+dist/
+build/
+
+# ===== Env =====
+.env
