@@ -1,42 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TaskFlow</title>
-  <link rel="stylesheet" href="styles.css">
+  
   <link rel="icon" type="image/svg+xml" href="./img/logo.svg">
 
-  <!-- Material Symbols icon font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-  <!-- Google Fonts: Inter for headings, Roboto for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="app-wrapper">
-    <div class="todo-box">
-      <div class="todo-header">
-        <span class="material-symbols-outlined">arrow_back_ios</span>
-                  <h2 id="projectTitle" contenteditable="true" data-placeholder="Enter Title"></h2>
+
+  <div class="app-shell" id="appShell">
+    
+    <div class="todo-column">
+      <div class="todo-box">
+
+        <div class="todo-header">
+          <span class="material-symbols-outlined">arrow_back_ios</span>
+          <h2
+            id="projectTitle"
+            contenteditable="true"
+            data-placeholder="Enter Title"
+          ></h2>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="input-row">
+          <span class="material-symbols-outlined add-icon" id="addTaskBtn" title="Add Task">add</span>
+          <input type="text" id="taskInput" placeholder="Add a new task">
+        </div>
+
+        <ul class="task-list" id="taskList"></ul>
+
+        <div class="drop-delete-zone" id="dropDeleteZone">
+          <span class="material-symbols-outlined">delete</span>
+          <span>Drop here to delete</span>
+        </div>
+
+        <button id="deleteSelectedBtn" class="delete-selected-btn is-hidden">
+          <span class="material-symbols-outlined">delete_sweep</span> 
+          Delete all tasks
+        </button>
+
       </div>
-      <div class="divider"></div>
-
-      <div class="input-row">
-        <input type="text" id="taskInput" placeholder="Add a new task"></input>
-      </div>
-
-      <ul class="task-list" id="taskList">
-        <!-- <li class="task-item"></li> -->
-
-      </ul>
     </div>
-   </div>
-   <script src="script.js"></script>
+
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-inner">
+        
+        <div class="detail-header">
+          <div class="detail-breadcrumb">
+            <span class="material-symbols-outlined breadcrumb-icon">task_alt</span>
+            <span class="breadcrumb-label">Task Detail</span>
+          </div>
+          <button class="close-btn" id="closePanelBtn" aria-label="Close detail panel">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <h2
+          class="detail-task-name"
+          id="detailTaskName"
+          contenteditable="true"
+          data-placeholder="Task name"
+        ></h2>
+
+        <div class="due-date-field">
+          <div class="due-date-trigger" id="dueDateTrigger">
+            <span class="material-symbols-outlined due-icon">calendar_month</span>
+            <div class="due-text-group">
+              <span class="due-label">Due date</span>
+              <span class="due-value" id="dueDateDisplay">Empty</span>
+            </div>
+            <span class="material-symbols-outlined due-chevron" id="dueDateChevron">expand_more</span>
+          </div>
+
+          <div class="cal-panel is-hidden" id="calPanel"></div>
+        </div>
+
+        <div class="description-section">
+          <div class="description-label">
+            <span class="material-symbols-outlined">notes</span>
+            Description
+          </div>
+          <textarea
+            id="descriptionInput"
+            class="description-textarea"
+            placeholder="Add a description..."
+          ></textarea>
+        </div>
+
+        <div class="panel-footer">
+          <span class="save-indicator" id="saveIndicator"></span>
+        </div>
+
+      </div>
+    </div>
+
+  </div> <script type="module" src="./js/app.js"></script>
+  
 </body>
 </html>
